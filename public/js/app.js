@@ -4,15 +4,14 @@ angular
   .module('kargoApp', [
     'ngAnimate',
     'ui.router'
-  ]);
+  ])
+    .config(function($stateProvider, $urlRouterProvider) {
 
-//kargoApp.config(function($stateProvider, $urlRouterProvider) {
-//
-//    $urlRouterProvider.otherwise("/");
-//
-//    $stateProvider
-//        .state('postList', {
-//        url: "/",
-//        templateUrl: "<post-list></post-list>"
-//    });
-//});
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider
+        .state('postList', {
+        url: "/",
+        template: "<post-table></post-table>"
+    });
+});

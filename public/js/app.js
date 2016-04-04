@@ -7,14 +7,15 @@ angular
   ])
     .config(function($stateProvider, $urlRouterProvider) {
 
+        $urlRouterProvider.when('', "/");
 
-    $stateProvider.state('postList', {
-        url: "/",
-        template: "<post-table></post-table>"
-    });
+        $stateProvider.state('postList', {
+            url: "/",
+            template: "<post-table></post-table>"
+        });
 
-    $stateProvider.state('postDetail', {
-            url: "/post-detail/:postId",
-            template: "<span>Hello world!!</span>"
+        $stateProvider.state('postDetail', {
+                url: "/post-detail/:postId",
+                template: "<span>Hello world!!</span>"
         });
 });

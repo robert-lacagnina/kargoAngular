@@ -6,7 +6,7 @@
         <th>Body</th>
     </tr>
     <tr ng-repeat="post in posts">
-        <td>{{post.id}}</td>
+        <td><a ng-href="posts/{{post.id}}">{{post.id}}</a></td>
         <td>{{post.title}}</td>
         <td>{{post.body}}</td>
     </tr>

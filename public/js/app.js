@@ -13,5 +13,9 @@ angular
         .state('postList', {
         url: "/",
         template: "<post-table></post-table>"
-    });
+    })
+        .state('postDetail', {
+            url: "/post-detail/:postId",
+            template: "<post-detail></post-detail>"
+        });
 });

@@ -16,8 +16,8 @@ angular
         });
 
         $stateProvider.state('postDetail', {
-                url: "/post-detail/{postId}",
-                template: "<mytag></mytag>"
+                url: "{postId}",
+                template: "<post-detail></post-detail>"
         });
 
         $locationProvider.html5Mode({

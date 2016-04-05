@@ -7,6 +7,8 @@ angular.module('kargoApp').factory('trackerValidator', function () {
         var newData = [];
         var dayInMilliseconds = 86400000;
 
+        console.log(startDate);
+
         //sort by date
         function sortByDate() {
             trackerData.sort(function (a, b) {
@@ -23,15 +25,20 @@ angular.module('kargoApp').factory('trackerValidator', function () {
                 var currentDate = new Date(trackerData[i].date);
                 var nextDate = new Date(trackerData[i + 1].date);
 
+                console.log(((currentDate + 1) - startDate)/ dayInMilliseconds);
+                console.log((currentDate + 1).toJSON());
+
                 if(nextDate - currentDate != dayInMilliseconds) {
                     newData.push({
-                        id: (currentDate + 1) - startDate,
-                        date: currentDate + 1,
+                        id: (((currentDate + 1) - startDate)/ dayInMilliseconds),
+                        date: (currentDate + 1).toJSON(),
                         hits: 0
                     });
                 }
             }
         }
+
+        console.log(newData);
 
         trackerData.concat(newData);
         sortByDate();

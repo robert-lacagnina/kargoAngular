@@ -10,10 +10,10 @@
                 <th>Date</th>
                 <th>Hits</th>
             </tr>
-            <tr ng-repeat="tracker in trackers">
-                <td>{{}}</td>
-                <td>{{}}</td>
-                <td>{{}}</td>
+            <tr ng-repeat="tracker in validatedData">
+                <td>{{tracker.id}}</td>
+                <td>{{tracker.date}}</td>
+                <td>{{tracker.hits}}</td>
             </tr>
         </tbody>
     </table>

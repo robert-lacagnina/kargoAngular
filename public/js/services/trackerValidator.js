@@ -3,6 +3,9 @@
 angular.module('kargoApp').factory('trackerValidator', function () {
     return function (trackerData) {
 
+        var newDataArr = [];
+        var dayInMilliseconds = 86400000;
+
         //sort by date
         function sortByDate() {
             trackerData.sort(function (a, b) {
@@ -18,27 +21,41 @@ angular.module('kargoApp').factory('trackerValidator', function () {
 
         var newYearsDay = new Date(2015, 0, 1);
 
-        //var endDateStr = new Date(trackerData[trackerData.length]);
-        //console.log('start date: ' + startDate);
-
         var endDate = new Date(trackerData[trackerData.length -1].date);
-        // endDate = new Date(endDate.getTime() + endDate.getTimezoneOffset()*60000);
-
-        endDate.setDate(endDate.getDate() + 2);
-
-
-        //var dayInMilliseconds = 86400000;
+        endDate = new Date(endDate.getTime() + endDate.getTimezoneOffset()*60000);
 
         var currentDate = startDate;
         //console.log(startDate);
-        console.log(endDate);
 
-        while(currentDate.getTime() != endDate.getTime()) {
-            console.log(currentDate);
+        while(currentDate.getTime() !== endDate.getTime()) {
             currentDate.setDate(currentDate.getDate() + 1);
 
-            break;
+            var exists = trackerData.some(function (item) {
+                var date = new Date(item.date);
+                date = new Date(date.getTime() + date.getTimezoneOffset()*60000);
+
+                return date.getTime() == currentDate.getTime();
+
+            });
+
+            if(!exists) {
+                var newDate = new Date(currentDate.toDateString());
+                //newDate.setDate(newDate.getDate() + 1);
+                //console.log(newDate);
+
+                var newId = ((newDate.getTime() - newYearsDay.getTime()) / dayInMilliseconds) + 1;
+
+                var newData = {
+                        id: newId,
+                        date: newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate(),
+                        hits: 0
+                    };
+
+                newDataArr.push(newData);
+            }
         }
+
+        console.log(newDataArr);
 
         //check if the next date is one day difference, if not, insert new record
         //for(var i = 0; i < trackerData.length; i++) {

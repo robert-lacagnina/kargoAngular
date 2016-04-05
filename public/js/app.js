@@ -5,9 +5,10 @@ angular
     'ngAnimate',
     'ui.router'
   ])
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $urlRouterProvider.when('', "/");
+        //$urlRouterProvider.when('', "/");
+        //$urlRouterProvider.when('/post-detail', '/post-detail');
 
         $stateProvider.state('postList', {
             url: "/",
@@ -15,7 +16,12 @@ angular
         });
 
         $stateProvider.state('postDetail', {
-                url: "/post-detail/:postId",
-                template: "<span>Hello world!!</span>"
+                url: "/post-detail/{postId}",
+                template: "<mytag></mytag>"
+        });
+
+        $locationProvider.html5Mode({
+            enabled :true,
+            requireBase: false
         });
 });

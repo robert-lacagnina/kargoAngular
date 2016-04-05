@@ -12,7 +12,7 @@ angular.module('kargoApp').component('postDetail', {
 
             var validatedTrackerData = trackerValidator(data.data);
 
-            //console.log(sortedData);
+            //console.log(validatedTrackerData);
         });
     }
 });

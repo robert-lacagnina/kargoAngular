@@ -1,4 +1,20 @@
-<div>
-    <h5>{{post.title}}</h5>
+<div id="post-details">
+    <h5>{{post.title}} - {{post.id}}</h5>
     <p>{{post.body}}</p>
+</div>
+<div id="tracker-data">
+    <table>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Hits</th>
+            </tr>
+            <tr ng-repeat="tracker in trackers">
+                <td>{{}}</td>
+                <td>{{}}</td>
+                <td>{{}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
